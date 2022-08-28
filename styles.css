@@ -1,0 +1,210 @@
+
+:root{
+    --sidebar-padding:10px;
+    --header-padding: 15px;
+    --main-padding:15px;
+    --background-blue: rgba(24,146,211,255);
+    --profile-pic: url(./white-anthropomorphic-cat); /*profile img src: https://freesvg.org/white-anthropomorphic-cat*/
+}
+*{
+    padding:0;
+    margin:0;
+    font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+.container{
+    width:100vw;
+    height: 100vh;
+    display: grid;
+    grid:1fr 5fr/1fr 5fr; /*no of rows/no of cols*/
+}
+
+.sidebar{
+    background-color: var(--background-blue);
+    padding:16px;
+    grid-row: 1/3;
+
+    display: grid;
+    grid-template-rows: 90px 2fr 4fr;
+    gap:5px;
+
+}
+a, a:link {
+    text-decoration: none;
+    color: white;
+}
+.brand {
+    padding: 4px;
+    border: 1px solid blue;
+    display: grid;
+    grid: 1fr/1fr 4fr;
+    gap:8px;
+    
+}
+#dashboard{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid black;
+    align-self: center;
+}
+.logo {
+    width:40px;
+    height: 40px;
+    display: grid;
+    grid: 2fr 1fr 2fr/ 1fr 1fr;
+    gap:4px;
+    place-self: center;
+}
+.logo > div{
+    background-color: white;
+}
+#div1{
+    grid-row: 1/3;
+}
+
+#div4{  
+    grid-row: 2/4;
+}
+
+
+ul {
+    list-style-type: none;
+}
+.list1, .list2{
+    border: 1px solid blue;
+    padding: 4px;
+    color: white;
+    font-size: 24px;
+    font-weight: 700px;
+    margin-top:10px;
+
+}
+.list>ul{
+    display: grid;
+    /*grid-template-rows: repeat(6,1fr);
+    grid-auto-rows: 1fr; why these 2 lines has no effect?*/
+    gap:8px;
+}
+.list > ul>li{
+    border: 1px solid red;
+    font-weight: bold;
+    display:flex;
+    align-content: center;
+}
+.list>ul>li>span{
+    margin-right: 20px;
+    display: flex;
+    align-self: center;
+}
+.list>ul>li>a{
+    font-size: 1.2rem;
+}
+/*Header*/
+
+.header{
+    background-color: lightyellow;
+    grid-column: 2/3;
+
+
+    display:grid;
+    grid:1fr 1fr/1fr;
+    gap:2px;
+}
+
+.upper{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin:8px;
+}
+.search{
+    border: 2px solid green;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+
+}
+input[type="search"]{
+    margin-left: 24px;
+    padding: 16px;
+    font-size: 18px;
+    background-color: rgb(238, 234, 234);
+    border: 1px solid rgb(134, 133, 133);
+    border-radius: 20px;
+    width: min(80%, 700px); /*may need modification*/
+    height: 1.5rem;
+}
+.notification{
+    border: 2px solid green;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+   /* display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;*/
+
+}
+/*
+.notification button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: inherit;
+  }
+*/
+.notification > div >span{
+    background-image: var(--profile-pic);
+    
+}
+
+.material-icons-outlined{
+    font-size: 32px;
+}
+
+
+.lower{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+
+}
+
+.left{
+    border: 2px solid purple;
+
+}
+.right{
+    border: 2px solid purple;
+}
+.right>ul>li{
+    background-color: blue;
+}
+
+
+
+
+/*Main*/
+
+.main{
+    background-color: lightsalmon;
+    grid-area: 2/2/3/3; /*row start/col start/row end/col end*/
+    display: grid;
+    grid:100px auto / 3fr 1fr;
+
+}
+.card{
+    border: 2px solid black;
+}
+.projects{
+    grid-row: span 2;
+}
+.announcements{
+    background-color: rgb(215, 146, 215);
+}
+.trending{
+    background-color: lightcyan;
+}
