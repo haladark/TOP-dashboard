@@ -3,14 +3,34 @@
     --sidebar-padding:10px;
     --header-padding: 15px;
     --main-padding:15px;
+    --shadow:  2px 2px 10px 2px rgb(179, 179, 182); /*h-offset v-offset blur spread color*/
     --background-blue: rgba(24,146,211,255);
-    --profile-pic: url(./white-anthropomorphic-cat); /*profile img src: https://freesvg.org/white-anthropomorphic-cat*/
+    --background-grey: rgb(238, 236, 236);
+    --profile-background: rgba(64, 231, 250, 0.516);
+    --profile-pic: url(./cat-face.svg); /*profile img src: https://freesvg.org/white-anthropomorphic-cat*/
+    --account-1: url(bird.png);
+    --account-2: url(owl.png);
+    --account-3: url(dolphin.png);
+    --account-4: url(frog.png);
 }
+
 *{
     padding:0;
     margin:0;
     font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
+}
+
+button {
+    border: none;
+    appearance: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+  }
+
+.material-icons-outlined {
+    font-size: 32px;
 }
 
 .container{
@@ -24,9 +44,8 @@
     background-color: var(--background-blue);
     padding:16px;
     grid-row: 1/3;
-
     display: grid;
-    grid-template-rows: 90px 2fr 4fr;
+    grid-template-rows: 90px repeat(auto-fill, 300px);
     gap:5px;
 
 }
@@ -36,9 +55,8 @@ a, a:link {
 }
 .brand {
     padding: 4px;
-    border: 1px solid blue;
     display: grid;
-    grid: 1fr/1fr 4fr;
+    grid: 1fr/42px auto;
     gap:8px;
     
 }
@@ -46,7 +64,6 @@ a, a:link {
     font-size: 30px;
     font-weight: bold;
     color: white;
-    border: 1px solid black;
     align-self: center;
 }
 .logo {
@@ -55,7 +72,7 @@ a, a:link {
     display: grid;
     grid: 2fr 1fr 2fr/ 1fr 1fr;
     gap:4px;
-    place-self: center;
+    align-self: center;
 }
 .logo > div{
     background-color: white;
@@ -73,7 +90,6 @@ ul {
     list-style-type: none;
 }
 .list1, .list2{
-    border: 1px solid blue;
     padding: 4px;
     color: white;
     font-size: 24px;
@@ -83,12 +99,9 @@ ul {
 }
 .list>ul{
     display: grid;
-    /*grid-template-rows: repeat(6,1fr);
-    grid-auto-rows: 1fr; why these 2 lines has no effect?*/
     gap:8px;
 }
 .list > ul>li{
-    border: 1px solid red;
     font-weight: bold;
     display:flex;
     align-content: center;
@@ -101,25 +114,22 @@ ul {
 .list>ul>li>a{
     font-size: 1.2rem;
 }
-/*Header*/
+
+/*________Header__________*/
 
 .header{
-    background-color: lightyellow;
+    background-color: white;
+    box-shadow:10px 10px 15px 3px rgb(0 0 0 / 0.5);
     grid-column: 2/3;
-
-
     display:grid;
     grid:1fr 1fr/1fr;
-    gap:2px;
 }
 
 .upper{
     display: grid;
     grid-template-columns: 3fr 1fr;
-    margin:8px;
 }
 .search{
-    border: 2px solid green;
     padding-left: 1.5rem;
     display: flex;
     align-items: center;
@@ -130,81 +140,247 @@ input[type="search"]{
     margin-left: 24px;
     padding: 16px;
     font-size: 18px;
-    background-color: rgb(238, 234, 234);
+    background-color: var(--background-grey);
     border: 1px solid rgb(134, 133, 133);
     border-radius: 20px;
     width: min(80%, 700px); /*may need modification*/
     height: 1.5rem;
 }
 .notification{
-    border: 2px solid green;
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-   /* display: flex;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.2rem;
-    font-weight: 800;*/
-
+    font-size: 2rem;
+    font-weight: 800;
 }
-/*
-.notification button {
+.notification button{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    background-color: inherit;
-  }
-*/
-.notification > div >span{
+}
+
+.notification > span{
     background-image: var(--profile-pic);
-    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: rgba(64, 231, 250, 0.516);
+    margin: 4px 16px;
 }
-
-.material-icons-outlined{
-    font-size: 32px;
-}
-
 
 .lower{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-   
-
+    grid-template-columns: 2fr 1fr;
 }
 
 .left{
-    border: 2px solid purple;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:1em 0.5em;
+}
+.left>#profile-img{
+    background-image: var(--profile-pic);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(64, 231, 250, 0.516);
+    margin: 4px 16px;
 
+}
+#profile-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    gap:0.7rem;
+}
+#profile-text > h2{
+    font-size: 1.5rem;
 }
 .right{
-    border: 2px solid purple;
+    display: flex;
+    justify-content: flex-start;
+    gap:1.5rem;
+    align-items: center;
+    
 }
-.right>ul>li{
-    background-color: blue;
+.right>button{
+    color: white;
+    background-color: var(--background-blue);
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    width:min(100px, 8rem); /*change 8rem*/
+    border: none;
+    border-radius: 99em; /*why not working in %*/
+    justify-content: center;
 }
 
 
 
 
-/*Main*/
+/*__________Main____________*/
 
 .main{
-    background-color: lightsalmon;
+    background-color: var(--background-grey);
     grid-area: 2/2/3/3; /*row start/col start/row end/col end*/
     display: grid;
-    grid:100px auto / 3fr 1fr;
-
-}
-.card{
-    border: 2px solid black;
+    grid-template-columns: 5fr 2fr;
+    grid-template-rows: min-content 1fr ;
 }
 .projects{
     grid-row: span 2;
+    display: grid;
+    grid-template-rows: 50px auto;
+    padding: 26px;
+    background-color: inherit;
 }
+.main h3{
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+}
+
+.cards{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+.card{
+    border-left: 8px solid orange;
+    background-color: white;
+    
+    display: flex;
+    flex-direction: column;
+
+    gap:8px;
+    padding: 1.5rem 1rem 0 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    min-height: 200px;
+    
+}
+
+.card > h4{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.card > p{
+    color: rgb(75, 75, 75);
+    font-weight: 500;
+}
+.card .actions{
+    display: flex;
+    justify-content: flex-end;
+    flex:  1;
+    gap:2em;
+    padding-bottom: 1.2rem;
+    margin-bottom: 0;
+}
+.actions > button{ 
+    align-self: flex-end;
+    font-size: 1.6rem;
+    color: rgb(64, 64, 64);
+}
+
 .announcements{
-    background-color: rgb(215, 146, 215);
+    margin-right: 1.8rem;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+}
+.announcements h3{
+    margin-top: 24px;
+
+}
+.announcements > ul{
+    padding: 16px;
+    margin-top: 1em;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: var(--shadow); /*h-offset v-offset blur spread color*/
+
+}
+.announcements>ul>li:not(:first-child) {
+    margin-top: 12px;
+    border-top: 2px solid rgb(209, 209, 211);
+    padding-top: 5px;
+}
+.announcements>ul>li{
+    margin-top: 10px;   
+}
+
+.announce-p {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color:  rgb(75, 75, 75);
+    margin-top: 5px;
+  }
+ 
+.trending h3{
+    margin-top: 24px;
 }
 .trending{
-    background-color: lightcyan;
+    padding: 0 16px 16px 16px;
+    margin-top: 1em;
+    margin-right: 1.8rem;
+}
+.trending >ul{
+    padding: 16px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: var(--shadow); 
+
+    display: flex;
+    flex-direction: column;
+}
+.trending>ul>li{
+  display: flex;
+  padding:1rem;
+  align-items: center;
+}
+.account-text{
+  color:  rgb(75, 75, 75);
+  margin-left: 0.4em;
+}
+.username{
+  color:rgb(18, 18, 18);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profile-pic{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 4px 8px;
+}
+.trend1 .profile-pic{
+  background: var(--profile-background) var(--account-1) no-repeat center center;
+  background-size:50%; /*why cant write it inside .profile-pic{}*/
+}
+.trend2 .profile-pic{
+  background: var(--profile-background) var(--account-2) no-repeat center center;
+  background-size:50%;
+}
+.trend3 .profile-pic{
+  background: var(--profile-background) var(--account-3) no-repeat center center;
+  background-size:50%;
+}
+.trend4 .profile-pic{
+  background: var(--profile-background) var(--account-4) no-repeat center center;
+  background-size:50%;
 }
